@@ -10,7 +10,8 @@ RUN apk add --no-cache --virtual libretro-build-dependencies \
     freetype-dev \
     libxml2-dev \
     mesa-dev \
-    zlib-dev
+    zlib-dev \
+    alsa-lib-dev
 
 ENV LIBRETRO_REVISION master
 RUN git clone --depth 1 --branch ${LIBRETRO_REVISION} git://github.com/libretro/libretro-super.git /libretro-super
