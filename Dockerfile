@@ -19,7 +19,6 @@ RUN mkdir -p /opt/retroarch/cores
 
 WORKDIR /libretro-super
 
-RUN apk add bash
 ENV SHALLOW_CLONE 1
 ENV NOCLEAN 1
 RUN ./libretro-fetch.sh
