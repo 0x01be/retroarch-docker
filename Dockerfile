@@ -25,7 +25,7 @@ RUN chown -R xpra:xpra /home/xpra/
 
 USER xpra
 
-WORKDIR /home/retroarch
+WORKDIR /home/xpra/retroarch
 ENV PATH ${PATH}:/opt/retroarch/bin/
 ENV COMMAND retroarch
 
