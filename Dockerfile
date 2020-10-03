@@ -21,11 +21,12 @@ RUN apk add --no-cache --virtual libretro-runtime-dependencies \
 
 RUN mkdir -p /home/xpra/.config/retroarch
 RUN ln -s /opt/retroarch/cores /home/xpra/.config/retroarch/cores
+RUN ln -s /opt/retroarch/share/retroarch/assets /home/xpra/.config/retroarch/assets
 RUN chown -R xpra:xpra /home/xpra/
 
 USER xpra
 
-WORKDIR /home/xpra/retroarch
+WORKDIR /home/xpra/.config/retroarch
 ENV PATH ${PATH}:/opt/retroarch/bin/
 ENV COMMAND retroarch
 
