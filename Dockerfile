@@ -19,8 +19,13 @@ RUN apk add --no-cache --virtual libretro-runtime-dependencies \
     py3-qt5 \
     mesa-dri-swrast
 
+RUN mkdir -p /home/xpra/.config/retroarch
+RUN ln -s /opt/retroarch/cores /home/xpra/.config/retroarch/cores
+RUN chown -R xpra:xpra /home/xpra/
+
 USER xpra
 
+WORKDIR /home/retroarch
 ENV PATH ${PATH}:/opt/retroarch/bin/
 ENV COMMAND retroarch
 
