@@ -27,7 +27,11 @@ RUN ./retroarch-build.sh
 RUN ./libretro-build.sh
 
 WORKDIR /libretro-super/retroarch
-RUN make DESTDIR=/opt/retroarch install
+RUN apk add wayland-dev
+RUN apk add qt5-qtbase-dev
+RUN make clean
+RUN ./configure --prefix=/opt/retroarch
+RUN make install
 
 WORKDIR /libretro-super
 RUN ./libretro-install.sh /opt/retroarch/cores
