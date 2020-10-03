@@ -11,7 +11,9 @@ RUN apk add --no-cache --virtual libretro-build-dependencies \
     libxml2-dev \
     mesa-dev \
     zlib-dev \
-    alsa-lib-dev
+    alsa-lib-dev \
+    wayland-dev \
+    qt5-qtbase-dev
 
 ENV LIBRETRO_REVISION master
 RUN git clone --depth 1 --branch ${LIBRETRO_REVISION} git://github.com/libretro/libretro-super.git /libretro-super
@@ -27,8 +29,6 @@ RUN ./retroarch-build.sh
 RUN ./libretro-build.sh
 
 WORKDIR /libretro-super/retroarch
-RUN apk add wayland-dev
-RUN apk add qt5-qtbase-dev
 RUN make clean
 RUN ./configure --prefix=/opt/retroarch
 RUN make install
