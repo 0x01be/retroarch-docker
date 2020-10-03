@@ -15,7 +15,9 @@ RUN apk add --no-cache --virtual libretro-runtime-dependencies \
     mesa \
     zlib \
     wayland \
-    qt5-qtbase
+    qt5-qtbase \
+    py3-qt5 \
+    mesa-dri-swrast
 
 USER xpra
 
