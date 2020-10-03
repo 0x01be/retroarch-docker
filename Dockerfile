@@ -3,6 +3,7 @@ FROM 0x01be/retroarch:build as build
 FROM 0x01be/xpra
 
 COPY --from=build /opt/retroarch/ /opt/retroarch/
+COPY --from=build /lib/* /usr/lib/
 
 USER root
 
@@ -12,7 +13,9 @@ RUN apk add --no-cache --virtual libretro-runtime-dependencies \
     freetype \
     libxml2 \
     mesa \
-    zlib
+    zlib \
+    wayland \
+    qt5-qtbase
 
 USER xpra
 
