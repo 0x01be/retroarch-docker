@@ -13,7 +13,8 @@ RUN apk add --no-cache --virtual libretro-build-dependencies \
     zlib-dev \
     alsa-lib-dev \
     wayland-dev \
-    qt5-qtbase-dev
+    qt5-qtbase-dev \
+    libpcap-dev
 
 ENV LIBRETRO_REVISION master
 RUN git clone --depth 1 --branch ${LIBRETRO_REVISION} git://github.com/libretro/libretro-super.git /libretro-super
