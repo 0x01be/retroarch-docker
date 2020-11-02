@@ -2,7 +2,6 @@ FROM 0x01be/retroarch:build-arm32v6 as build
 
 FROM 0x01be/xpra:arm32v6
 
-USER root
 RUN apk add --no-cache --virtual libretro-runtime-dependencies \
     eudev \
     ffmpeg \
@@ -12,11 +11,9 @@ RUN apk add --no-cache --virtual libretro-runtime-dependencies \
     zlib \
     wayland \
     qt5-qtbase \
-    py3-qt5 \
     mesa-dri-swrast
 
 COPY --from=build /opt/retroarch/ /opt/retroarch/
-COPY --from=build /lib/* /usr/lib/
 
 RUN mkdir -p /home/xpra/.config/retroarch
 RUN ln -s /opt/retroarch/cores /home/xpra/.config/retroarch/cores
@@ -24,7 +21,6 @@ RUN ln -s /opt/retroarch/share/retroarch/assets /home/xpra/.config/retroarch/ass
 RUN chown -R xpra:xpra /home/xpra/
 
 USER xpra
-
 ENV PATH ${PATH}:/opt/retroarch/bin/
 ENV COMMAND retroarch
 
